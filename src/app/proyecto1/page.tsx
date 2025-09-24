@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Proyecto1() {
   const [nombre, setNombre] = useState("");
@@ -38,45 +38,6 @@ export default function Proyecto1() {
     setPromedio(resultado);
   };
 
-  // Animación para los elementos de entrada
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const resultVariants: Variants = {
-    hidden: { opacity: 0, height: 0, marginTop: 0 },
-    visible: {
-      opacity: 1,
-      height: "auto",
-      marginTop: "1.5rem",
-      transition: { 
-        duration: 0.5, 
-        ease: [0.04, 0.62, 0.23, 0.98] 
-      }
-    }
-  };
-
-  const noteInputVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    })
-  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-6">
@@ -91,7 +52,6 @@ export default function Proyecto1() {
       >
         {/* Contenido con animación escalonada */}
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="space-y-6"
@@ -133,14 +93,6 @@ export default function Proyecto1() {
           {notas.length > 0 && (
             <motion.div 
               className="space-y-3 mb-6"
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2
-                  }
-                }
-              }}
               initial="hidden"
               animate="visible"
             >
@@ -150,7 +102,6 @@ export default function Proyecto1() {
                   <motion.div
                     key={index}
                     custom={index}
-                    variants={noteInputVariants}
                     className="w-full"
                   >
                     <input
@@ -191,7 +142,6 @@ export default function Proyecto1() {
             {promedio && (
               <motion.div 
                 className="overflow-hidden"
-                variants={resultVariants}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
