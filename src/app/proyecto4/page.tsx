@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function Proyecto4() {
   const [nombre, setNombre] = useState("");
@@ -11,7 +11,7 @@ export default function Proyecto4() {
 
   const generarSaludo = () => {
     if (!nombre.trim() || !edad.trim() || isNaN(Number(edad))) {
-      setMensaje("⚠️ Ingresa un nombre y una edad válida.");
+      setMensaje("⚠️ Ingresa un nombre y una edad válida");
       return;
     }
 
@@ -28,7 +28,7 @@ export default function Proyecto4() {
   };
 
   // Animación para los elementos de entrada
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -39,21 +39,21 @@ export default function Proyecto4() {
         staggerChildren: 0.1
       }
     }
-  };
+  } as const;
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { 
         duration: 0.5,
-        ease: "easeOut"
+        ease: [0.16, 1, 0.3, 1] as const
       }
     }
-  };
+  } as const;
 
-  const resultVariants = {
+  const resultVariants: Variants = {
     hidden: { opacity: 0, height: 0, marginTop: 0 },
     visible: {
       opacity: 1,
@@ -61,10 +61,10 @@ export default function Proyecto4() {
       marginTop: "1.5rem",
       transition: { 
         duration: 0.5, 
-        ease: [0.04, 0.62, 0.23, 0.98] 
+        ease: [0.04, 0.62, 0.23, 0.98] as const
       }
     }
-  };
+  } as const;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 p-6">

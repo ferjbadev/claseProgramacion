@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function Proyecto3() {
   const [celsius, setCelsius] = useState("");
@@ -35,23 +35,26 @@ export default function Proyecto3() {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
     }
   };
 
-  const resultVariants = {
-    hidden: { opacity: 0, height: 0 },
+  const resultVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      height: 0 
+    },
     visible: {
       opacity: 1,
       height: "auto",
-      transition: { duration: 0.5, ease: "easeInOut" }
+      transition: { 
+        duration: 0.3,
+        ease: "easeInOut"
+      }
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-cyan-100 to-indigo-200 p-6">
-      {/* Contenedor principal con animación de entrada */}
       <motion.div 
         className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center"
         initial={{ opacity: 0, y: 30 }}

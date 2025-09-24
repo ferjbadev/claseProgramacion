@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function Proyecto2() {
   const [radio, setRadio] = useState("");
   const [area, setArea] = useState<string | null>(null);
+  
   const calcularArea = () => {
     const r = Number(radio);
 
@@ -20,32 +21,33 @@ export default function Proyecto2() {
   };
 
   // Animación para los elementos de entrada
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
         when: "beforeChildren",
-        staggerChildren: 0.1
+        staggerChildren: 0.1,
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1] // cubic-bezier(0.16, 1, 0.3, 1)
       }
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.5,
-        ease: "easeOut"
+      transition: {
+        duration: 0.4,
+        ease: [0.33, 1, 0.68, 1] // cubic-bezier(0.33, 1, 0.68, 1)
       }
     }
   };
 
-  const resultVariants = {
+  const resultVariants: Variants = {
     hidden: { opacity: 0, height: 0, marginTop: 0 },
     visible: {
       opacity: 1,
@@ -53,11 +55,10 @@ export default function Proyecto2() {
       marginTop: "1.5rem",
       transition: { 
         duration: 0.5, 
-        ease: [0.04, 0.62, 0.23, 0.98] 
+        ease: [0.16, 1, 0.3, 1] // cubic-bezier(0.16, 1, 0.3, 1)
       }
     }
   };
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-amber-50 p-6">
       {/* Contenedor principal con animación de entrada */}

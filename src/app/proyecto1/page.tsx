@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function Proyecto1() {
   const [nombre, setNombre] = useState("");
@@ -62,9 +62,9 @@ export default function Proyecto1() {
         ease: "easeOut"
       }
     }
-  };
+  } as const;
 
-  const resultVariants = {
+  const resultVariants: Variants = {
     hidden: { opacity: 0, height: 0, marginTop: 0 },
     visible: {
       opacity: 1,
@@ -77,7 +77,7 @@ export default function Proyecto1() {
     }
   };
 
-  const noteInputVariants = {
+  const noteInputVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i: number) => ({
       opacity: 1,
@@ -94,13 +94,11 @@ export default function Proyecto1() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-6">
       {/* Contenedor principal con animación de entrada */}
       <motion.div 
-        className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md text-center border border-white/20 overflow-hidden"
         initial={{ opacity: 0, y: 30, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ 
           duration: 0.6, 
-          ease: [0.16, 1, 0.3, 1],
-          scale: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }
+          ease: [0.16, 1, 0.3, 1] as const
         }}
       >
         {/* Contenido con animación escalonada */}
@@ -256,7 +254,10 @@ export default function Proyecto1() {
         className="mt-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ 
+          duration: 0.3, 
+          ease: [0.4, 0, 0.2, 1] as const 
+        }}
       >
         <Link
           href="/"
