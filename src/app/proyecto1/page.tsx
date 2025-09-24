@@ -52,18 +52,6 @@ export default function Proyecto1() {
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { 
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  } as const;
-
   const resultVariants: Variants = {
     hidden: { opacity: 0, height: 0, marginTop: 0 },
     visible: {
@@ -109,7 +97,7 @@ export default function Proyecto1() {
           className="space-y-6"
         >
           {/* Título */}
-          <motion.div variants={itemVariants}>
+          <motion.div >
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
               Calculadora de Promedio
             </h1>
@@ -119,7 +107,7 @@ export default function Proyecto1() {
           </motion.div>
 
           {/* Input nombre */}
-          <motion.div variants={itemVariants}>
+          <motion.div >
             <input
               type="text"
               value={nombre}
@@ -130,7 +118,7 @@ export default function Proyecto1() {
           </motion.div>
 
           {/* Input cantidad de notas */}
-          <motion.div variants={itemVariants}>
+          <motion.div >
             <input
               type="number"
               min="0"
@@ -182,7 +170,7 @@ export default function Proyecto1() {
           )}
 
           {/* Botón */}
-          <motion.div variants={itemVariants}>
+          <motion.div >
             <motion.button
               onClick={calcularPromedio}
               disabled={notas.length === 0}
