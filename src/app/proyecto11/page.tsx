@@ -20,16 +20,15 @@ export default function Proyecto11() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 p-6">
       
-      {/* Contenedor principal animado */}
+      {/* Contenedor principal */}
       <motion.div
         className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Título animado */}
         <motion.h1
           className="text-2xl font-bold text-gray-700 mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -39,7 +38,6 @@ export default function Proyecto11() {
           🔐 Verificador de Login
         </motion.h1>
 
-        {/* Inputs animados */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
           <input
             type="text"
@@ -60,7 +58,6 @@ export default function Proyecto11() {
           />
         </motion.div>
 
-        {/* Botón Login animado */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
           <button
             onClick={verificarLogin}
@@ -70,7 +67,6 @@ export default function Proyecto11() {
           </button>
         </motion.div>
 
-        {/* Resultado animado */}
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={mensaje ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
@@ -107,6 +103,7 @@ export default function Proyecto11() {
           Volver
         </Link>
       </motion.div>
+
     </div>
   );
 }
