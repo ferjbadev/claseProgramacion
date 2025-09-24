@@ -67,7 +67,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-white">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-green-100">
       {/* Texto superior */}
       <motion.h1 
         className="mb-12 text-4xl font-bold text-black px-6 text-center"
