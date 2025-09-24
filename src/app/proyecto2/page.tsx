@@ -11,7 +11,7 @@ export default function Proyecto2() {
     const r = Number(radio);
 
     if (isNaN(r) || r <= 0) {
-      setArea("⚠️ Ingresa un número válido mayor a 0.");
+      setArea("⚠️ Ingresa un número válido mayor a 0");
       return;
     }
 
