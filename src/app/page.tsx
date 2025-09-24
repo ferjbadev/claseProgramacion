@@ -1,103 +1,53 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+const buttons = [
+  { href: "/proyecto1", label: "1", color: "bg-blue-500", text: "text-white" },
+  { href: "/proyecto2", label: "2", color: "bg-green-500", text: "text-white" },
+  { href: "/proyecto3", label: "3", color: "bg-purple-500", text: "text-white" },
+  { href: "/proyecto4", label: "4", color: "bg-red-500", text: "text-white" },
+  { href: "/proyecto5", label: "5", color: "bg-yellow-500", text: "text-black" },
+  { href: "/proyecto6", label: "6", color: "bg-pink-500", text: "text-white" },
+  { href: "/proyecto7", label: "7", color: "bg-indigo-500", text: "text-white" },
+  { href: "/proyecto8", label: "8", color: "bg-teal-500", text: "text-white" },
+  { href: "/proyecto9", label: "9", color: "bg-orange-500", text: "text-white" },
+  { href: "/proyecto10", label: "10", color: "bg-cyan-500", text: "text-white" },
+  { href: "/proyecto11", label: "11", color: "bg-lime-500", text: "text-black" },
+];
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              JOSEEEEEE
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const radius = 150; // radio del círculo
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      {/* Texto superior */}
+      <h1 className="mb-12 text-3xl font-bold text-gray-800">Selecciona un Número!</h1>
+
+      {/* Círculo con botones */}
+      <motion.div
+        className="relative w-[400px] h-[400px] rounded-full"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      >
+        {buttons.map((btn, index) => {
+          const angle = (index / buttons.length) * 2 * Math.PI;
+          const x = radius * Math.cos(angle);
+          const y = radius * Math.sin(angle);
+
+          return (
+            <motion.div
+              key={index}
+              className={`absolute px-6 py-4 rounded-full shadow cursor-pointer ${btn.color} ${btn.text} border border-black`}
+              style={{ top: "50%", left: "50%", x, y, translateX: "-50%", translateY: "-50%" }}
+              whileHover={{ scale: 1.2 }}
+            >
+              <Link href={btn.href}>{btn.label}</Link>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </main>
   );
 }
