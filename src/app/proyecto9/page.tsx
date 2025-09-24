@@ -11,7 +11,7 @@ export default function Proyecto9() {
     const n = Number(nota);
 
     if (isNaN(n) || n < 0 || n > 100) {
-      setCalificacion("⚠️ Ingresa una calificación válida (0-100).");
+      setCalificacion("⚠️ Ingresa una calificación válida (0-100)");
       return;
     }
 
@@ -27,43 +27,47 @@ export default function Proyecto9() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-blue-200 via-cyan-100 to-indigo-200 p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold text-blue-600 mb-6">
-          📝 Calificador de Notas
-        </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100 p-6">
+      {/* Contenedor principal */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+        
+        {/* Texto animado */}
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="text-xl font-bold mb-6 text-blue-600 text-center"
+        >
+          9-) En esta sección, calcularemos tu calificación en letras 📝
+        </motion.p>
 
         {/* Input */}
         <input
           type="number"
-          placeholder="Ingresa tu calificación (0-100)"
+          placeholder="Ingresa tu nota (0-100)"
           value={nota}
           onChange={(e) => setNota(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-center"
+          className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
         />
 
         {/* Botón */}
         <button
           onClick={calcularCalificacion}
-          className="w-full px-6 py-2 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600 transition"
+          className="px-6 py-2 bg-blue-500 text-white border border-black rounded-xl shadow hover:bg-blue-600 transition w-full"
         >
           Calcular Calificación
         </button>
 
         {/* Resultado */}
         {calificacion && (
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-lg font-semibold text-blue-700">{calificacion}</p>
-          </div>
+          <p className="mt-6 text-lg font-semibold text-center text-black">
+            {calificacion}
+          </p>
         )}
       </div>
+
       {/* Botón de regresar */}
-      <motion.div 
-        className="mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
+      <div className="mt-8">
         <Link
           href="/"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
@@ -73,7 +77,7 @@ export default function Proyecto9() {
           </svg>
           Volver al inicio
         </Link>
-      </motion.div>
+      </div>
     </div>
   );
 }

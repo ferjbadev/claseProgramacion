@@ -15,7 +15,7 @@ export default function Proyecto10() {
     const n3 = Number(num3);
 
     if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-      setMayor("⚠️ Ingresa números válidos.");
+      setMayor("⚠️ Ingresa números válidos");
       return;
     }
 
@@ -24,11 +24,19 @@ export default function Proyecto10() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-tr from-green-200 via-emerald-100 to-teal-200 p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold text-green-600 mb-6">
-          🔢 Comparador de Números
-        </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-green-100 p-6">
+      {/* Contenedor principal */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+        
+        {/* Texto animado */}
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="text-xl font-bold mb-6 text-green-600 text-center"
+        >
+          10-) En esta sección, vamos a comparar tres números 🔢
+        </motion.p>
 
         {/* Inputs */}
         <input
@@ -36,45 +44,41 @@ export default function Proyecto10() {
           placeholder="Número 1"
           value={num1}
           onChange={(e) => setNum1(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-center"
+          className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
         />
         <input
           type="number"
           placeholder="Número 2"
           value={num2}
           onChange={(e) => setNum2(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-center"
+          className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
         />
         <input
           type="number"
           placeholder="Número 3"
           value={num3}
           onChange={(e) => setNum3(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-center"
+          className="mb-6 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
         />
 
         {/* Botón */}
         <button
           onClick={compararNumeros}
-          className="w-full px-6 py-2 bg-green-500 text-white rounded-xl shadow hover:bg-green-600 transition"
+          className="px-6 py-2 bg-green-500 text-white border border-black rounded-xl shadow hover:bg-green-600 transition w-full"
         >
           Comparar
         </button>
 
         {/* Resultado */}
         {mayor && (
-          <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-lg font-semibold text-green-700">{mayor}</p>
-          </div>
+          <p className="mt-6 text-lg font-semibold text-center text-black">
+            {mayor}
+          </p>
         )}
       </div>
+
       {/* Botón de regresar */}
-      <motion.div 
-        className="mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
+      <div className="mt-8">
         <Link
           href="/"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
@@ -84,7 +88,7 @@ export default function Proyecto10() {
           </svg>
           Volver al inicio
         </Link>
-      </motion.div>
+      </div>
     </div>
   );
 }
