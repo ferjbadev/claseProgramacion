@@ -70,7 +70,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-white">
       {/* Texto superior */}
       <motion.h1 
-        className="mb-12 text-4xl font-bold text-black px-6"
+        className="mb-12 text-4xl font-bold text-black px-6 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
