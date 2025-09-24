@@ -1,5 +1,6 @@
-<<<<<<< HEAD
 "use client";
+
+
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -230,14 +231,4 @@ export default function Proyecto4() {
       </motion.div>
     </div>
   );
-=======
-import React from 'react'
-
-const page = () => {
-  return (
-    <div>page</div>
-  )
->>>>>>> parent of b9c0996 (proyecto4)
 }
-
-export default page
