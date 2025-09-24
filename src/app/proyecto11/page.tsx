@@ -21,72 +21,92 @@ export default function Proyecto11() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 p-6">
-      {/* Caja principal */}
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold text-gray-700 mb-6">
-          🔐 Verificador de Login
-        </h1>
-
-        {/* Input Usuario */}
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={usuario}
-          onChange={(e) => setUsuario(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 text-center"
-        />
-
-        {/* Input Contraseña */}
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={contrasena}
-          onChange={(e) => setContrasena(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 text-center"
-        />
-
-        {/* Botón Login */}
-        <button
-          onClick={verificarLogin}
-          className="w-full px-6 py-2 bg-gray-700 text-white rounded-xl shadow hover:bg-gray-800 transition"
-        >
-          Iniciar Sesión
-        </button>
-
-        {/* Resultado */}
-        {mensaje && (
-          <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-            <p className="text-lg font-semibold text-gray-700">{mensaje}</p>
-          </div>
-        )}
-
-        {/* Botón de regresar animado dentro del contenedor */}
-        <motion.div
-          className="mt-8"
-          initial={{ opacity: 0, y: 20 }}
+      
+      {/* Contenedor principal animado */}
+      <motion.div
+        className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Título animado */}
+        <motion.h1
+          className="text-2xl font-bold text-gray-700 mb-6"
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ duration: 1.5 }}
         >
-          <Link
-            href="/"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Volver al inicio
-          </Link>
+          🔐 Verificador de Login
+        </motion.h1>
+
+        {/* Inputs animados */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 text-center"
+          />
         </motion.div>
-      </div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={contrasena}
+            onChange={(e) => setContrasena(e.target.value)}
+            className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 text-center"
+          />
+        </motion.div>
+
+        {/* Botón Login animado */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <button
+            onClick={verificarLogin}
+            className="w-full px-6 py-2 bg-gray-700 text-white rounded-xl shadow hover:bg-gray-800 hover:scale-105 transition-all"
+          >
+            Iniciar Sesión
+          </button>
+        </motion.div>
+
+        {/* Resultado animado */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={mensaje ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          {mensaje && (
+            <motion.div
+              className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-lg font-semibold text-gray-700">{mensaje}</p>
+            </motion.div>
+          )}
+        </motion.div>
+      </motion.div>
+
+      {/* Botón Volver debajo del contenedor */}
+      <motion.div
+        className="mt-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <Link
+          href="/"
+          className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+          Volver
+        </Link>
+      </motion.div>
     </div>
   );
 }

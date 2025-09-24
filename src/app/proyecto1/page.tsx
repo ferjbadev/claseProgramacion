@@ -177,7 +177,7 @@ export default function Proyecto1() {
               clipRule="evenodd"
             />
           </svg>
-          Volver al inicio
+          Volver
         </Link>
       </motion.div>
     </div>

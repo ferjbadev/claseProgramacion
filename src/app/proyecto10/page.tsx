@@ -26,8 +26,12 @@ export default function Proyecto10() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-green-100 p-6">
       {/* Contenedor principal */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
-        
+      <motion.div
+        className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Texto animado */}
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -38,47 +42,72 @@ export default function Proyecto10() {
           10-) En esta sección, vamos a comparar tres números 🔢
         </motion.p>
 
-        {/* Inputs */}
-        <input
-          type="number"
-          placeholder="Número 1"
-          value={num1}
-          onChange={(e) => setNum1(e.target.value)}
-          className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
-        />
-        <input
-          type="number"
-          placeholder="Número 2"
-          value={num2}
-          onChange={(e) => setNum2(e.target.value)}
-          className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
-        />
-        <input
-          type="number"
-          placeholder="Número 3"
-          value={num3}
-          onChange={(e) => setNum3(e.target.value)}
-          className="mb-6 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
-        />
+        {/* Inputs animados */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <input
+            type="number"
+            placeholder="Número 1"
+            value={num1}
+            onChange={(e) => setNum1(e.target.value)}
+            className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
+          />
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+          <input
+            type="number"
+            placeholder="Número 2"
+            value={num2}
+            onChange={(e) => setNum2(e.target.value)}
+            className="mb-4 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
+          />
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <input
+            type="number"
+            placeholder="Número 3"
+            value={num3}
+            onChange={(e) => setNum3(e.target.value)}
+            className="mb-6 px-4 py-2 border text-black border-black rounded-lg w-full text-center"
+          />
+        </motion.div>
 
-        {/* Botón */}
-        <button
-          onClick={compararNumeros}
-          className="px-6 py-2 bg-green-500 text-white border border-black rounded-xl shadow hover:bg-green-600 transition w-full"
+        {/* Botón animado */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+          <button
+            onClick={compararNumeros}
+            className="px-6 py-2 bg-green-500 text-white border border-black rounded-xl shadow hover:bg-green-600 hover:scale-105 transition-all w-full"
+          >
+            Comparar
+          </button>
+        </motion.div>
+
+        {/* Resultado animado */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={mayor ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
         >
-          Comparar
-        </button>
+          {mayor && (
+            <motion.p
+              className="mt-6 text-lg font-semibold text-center text-black"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              {mayor}
+            </motion.p>
+          )}
+        </motion.div>
+      </motion.div>
 
-        {/* Resultado */}
-        {mayor && (
-          <p className="mt-6 text-lg font-semibold text-center text-black">
-            {mayor}
-          </p>
-        )}
-      </div>
-
-      {/* Botón de regresar */}
-      <div className="mt-8">
+      {/* Botón volver debajo del contenedor */}
+      <motion.div
+        className="mt-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+      >
         <Link
           href="/"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white/20"
@@ -86,9 +115,9 @@ export default function Proyecto10() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
           </svg>
-          Volver al inicio
+          Volver
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 }
